@@ -1,6 +1,6 @@
 var bgColor;
 var weather;
-var openweatherApi = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var openweatherApi = 'https://api.openweathermap.org/data/2.5/weather?q=';
 var apiKey = '&appid=53ad3f4ebe44c523ed92bfc6fc5111aa';
 var unitsType = '&units=metric';
 var cityInputField;
