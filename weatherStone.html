@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        div.container {
+            width: 950px;
+            margin: 0 auto;
+        }
+
+        header, footer {
+            padding: 1em;
+            color: white;
+            background-color: black;
+            clear: left;
+            text-align: center;
+        }
+
+        nav {
+            float: left;
+            max-width: 300px;
+            margin: 0;
+            padding: 1em;
+        }
+
+        div.canvasDiv {
+            margin-left: 170px;
+            border-left: 1px solid gray;
+            padding: 1em;
+            overflow: hidden;
+        }
+
+
+    </style>
+    <meta charset="utf-8" />
+    <title>Code Competition #2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.9/addons/p5.dom.js"></script>
+    <script src="drop.js"></script>
+    <script src="snow.js"></script>
+    <script src="weatherStone.js"></script>
+    <script src="lightningBolt.js"></script>
+    <script src="sun.js"></script>
+    <script src="cloud.js"></script>
+    <script src="mist.js"></script>
+    <script src="windarrow.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Show weather</h1>
+        </header>
+        <nav>
+            <div id="tabs">
+                <div id="dataSource" style="margin-bottom:15px">
+                    <form action="">
+                        <input type="radio" name="liveOrSimulated" id="liveRadioButton" value="livedata" class="citySelect" checked> Live
+                        <input type="radio" name="liveOrSimulated" id="simulatedRadioButton" value="simulateddata" class="simulateSelect"> Simulated<br>
+                    </form>
+                </div>
+
+                <div style="width: 400px">
+
+                    <div id="citySelect" class="tab">
+                        City: <input id="city" value="Aarhus" style="margin-bottom:5px"></input>
+
+                        <button id="submit">Søg</button>
+                        <br>
+                        <span id="tempLabel">Temp: </span>
+                        <span id="tempValue"></span>
+                        <br>
+                        <span id="conditionLabel">Weather condition: </span>
+                        <span id="conditionValue"></span>
+        
+                    </div>
+
+                    <div id="simulateSelect" class="tab">
+                        <form action="">
+                            <span>Wind direction (0-360) </span><input id="windAngldeInput" value="20" style="width: 50px"></input><br>
+                            <input type="radio" name="weatherSelect" id="rainRadio" value="Rain"> Rain<br>
+                            <input type="radio" name="weatherSelect" id="snowRadio" value="Snow"> Snow<br>
+                            <input type="radio" name="weatherSelect" id="cloudsRadio" value="Clouds"> Clouds <br>
+                            <input type="radio" name="weatherSelect" id="clearRadio" value="Clear"> Clear<br>
+                            <input type="radio" name="weatherSelect" id="thunderstormRadio" value="Thunderstorm"> Thunderstorm<br>
+                            <input type="radio" name="weatherSelect" id="mistRadio" value="Mist"> Fog (Heavy memory usage)<br>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div id="sketch-holder" class="canvasDiv">
+
+            </div>
+            <footer>
+                Copyright &copy; Emilian Kaminski
+            </footer>
+        </div>
+      
+
+
+<script type="text/javascript" charset="utf-8">
+    (function(){
+          var tabs = document.getElementById('tabs');
+          var nav = tabs.getElementsByClassName('tab');
+          console.log(nav);
+          
+          /* 
+          * Skjul alle tabs
+          */
+          function hideTabs(){
+            for(var i=0;i<nav.length;i++){
+                nav[i].style.display = 'none';
+            }
+          }
+
+        hideTabs(); /* Skjul alle tabs on load */
+
+        showTabCitySelect()
+    })();
+
+    var liveRadioButtonLink = document.getElementById('liveRadioButton');
+    liveRadioButtonLink.addEventListener('click', showTabCitySelect);
+
+    var simulatedRadioButtonLink = document.getElementById('simulatedRadioButton');
+    simulatedRadioButtonLink.addEventListener('click', showTabSimulateSelect);
+
+    /*
+    * Vis den klikkede tab
+    */
+    function showTabCitySelect() {
+        var citySelectTab = document.getElementById('citySelect');
+        citySelectTab.style.display = 'block';
+
+        var simulateTab = document.getElementById('simulateSelect');
+        simulateTab.style.display = 'none';
+    }
+
+        function showTabSimulateSelect() {
+        var citySelectTab = document.getElementById('citySelect');
+        citySelectTab.style.display = 'none';
+
+        var simulateTab = document.getElementById('simulateSelect');
+        simulateTab.style.display = 'block';
+    }
+
+    </script>
+</body>
+</html>
