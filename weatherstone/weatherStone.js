@@ -1,7 +1,7 @@
 var bgColor;
 var weather;
-var openweatherApi = 'https://api.openweathermap.org/data/2.5/weather?q=';
-var apiKey = '&appid=53ad3f4ebe44c523ed92bfc6fc5111aa';
+var openweatherApi = config.openweatherApi;
+var apiKey = config.apiKey;
 var unitsType = '&units=metric';
 var cityInputField;
 var currentWeatherCondition;
